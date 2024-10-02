@@ -20,10 +20,28 @@ namespace Modules_lab3_Binding_AutoRefresh
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<Mushroom> mushrooms;
+        public List<Mushroom> mushrooms { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+
+            mushrooms = new List<Mushroom>()
+            {
+                new Mushroom(1, "Name", "Colour", true, 24.5, 32.4, 86.3),
+                new Mushroom(2, "Name", "Colour", true, 24.5, 32.4, 86.3),
+                new Mushroom(3, "Name", "Colour", true, 24.5, 32.4, 86.3)
+            };
         }
+
+        //private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    mushrooms.Remove(ListViewMushroom.SelectedItem);
+        //}
+
+        //private void AddButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    mushrooms.Add(new Mushroom())
+        //}
     }
 }

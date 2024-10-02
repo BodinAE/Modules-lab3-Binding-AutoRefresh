@@ -6,9 +6,35 @@
         xmlns:local="clr-namespace:Modules_lab3_Binding_AutoRefresh"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <StackPanel>
-        <ListView Name="ListViewMushroom" ItemsSource="{Binding mushrooms}">
-            
+    <WrapPanel>
+        <ListView Name="ListViewMushroom" ItemsSource="{Binding mushrooms}" Margin="20 20 20 20">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Colour" DisplayMemberBinding="{Binding Colour}"/>
+                    <GridViewColumn Header="Edibility" DisplayMemberBinding="{Binding Edibility}"/>
+                    <GridViewColumn Header="Weight" DisplayMemberBinding="{Binding Weight}"/>
+                    <GridViewColumn Header="Height" DisplayMemberBinding="{Binding Height}"/>
+                    <GridViewColumn Header="Cap Radius" DisplayMemberBinding="{Binding Cap_Radius}"/>
+                </GridView>
+            </ListView.View>
         </ListView>
-    </StackPanel>
+        <StackPanel Width="100" Margin="0 20 0 0" DataContext="{Binding ElementName=ListViewMushroom, Path=SelectedItem}">
+            <TextBox Text="{Binding ID}" Margin="0 5 0 5"/>
+            <TextBox Text="{Binding Name}" Margin="0 5 0 5"/>
+            <TextBox Text="{Binding Colour}" Margin="0 5 0 5"/>
+            <WrapPanel Margin="0 5 0 5">
+                <TextBlock Text="Edibility:" Margin="0 0 20 0"/>
+                <CheckBox IsChecked="{Binding Edibility}"/>
+            </WrapPanel>
+            <TextBox Text="{Binding Weight}" Margin="0 5 0 5"/>
+            <TextBox Text="{Binding Height}" Margin="0 5 0 5"/>
+            <TextBox Text="{Binding Cap_Radius}" Margin="0 5 0 5"/>
+            <!--<WrapPanel>
+                <Button Content="Remove" Click="RemoveButton_Click"/>
+                <Button Content="Add" Click="AddButton_Click"/>
+            </WrapPanel>-->
+        </StackPanel>
+    </WrapPanel>
 </Window>
