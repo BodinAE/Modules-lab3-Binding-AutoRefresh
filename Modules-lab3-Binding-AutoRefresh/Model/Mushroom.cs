@@ -20,6 +20,7 @@ namespace Modules_lab3_Binding_AutoRefresh
             set
             {
                 id = value;
+                OnPropertyChanged("ID");
             } 
         }
         private string name;
@@ -32,6 +33,7 @@ namespace Modules_lab3_Binding_AutoRefresh
             set
             {
                 name = value;
+                OnPropertyChanged("Name");
             }
         }
         private string colour;
@@ -44,6 +46,7 @@ namespace Modules_lab3_Binding_AutoRefresh
             set
             {
                 colour = value;
+                OnPropertyChanged("Colour");
             }
         }
         private bool edibility;
@@ -56,6 +59,7 @@ namespace Modules_lab3_Binding_AutoRefresh
             set
             {
                 edibility = value;
+                OnPropertyChanged("Edibility");
             }
         }
         private double weight;
@@ -68,6 +72,7 @@ namespace Modules_lab3_Binding_AutoRefresh
             set
             {
                 weight = value;
+                OnPropertyChanged("Weight");
             }
         }
         private double height;
@@ -80,6 +85,7 @@ namespace Modules_lab3_Binding_AutoRefresh
             set
             {
                 height = value;
+                OnPropertyChanged("Height");
             }
         }
         private double cap_radius;
@@ -92,6 +98,7 @@ namespace Modules_lab3_Binding_AutoRefresh
             set
             {
                 cap_radius = value;
+                OnPropertyChanged("Cap Radius");
             }
         }
 
