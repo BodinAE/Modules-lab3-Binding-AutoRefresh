@@ -5,36 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Modules_lab3_Binding_AutoRefresh"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <WrapPanel>
-        <ListView Name="ListViewMushroom" ItemsSource="{Binding mushrooms,UpdateSourceTrigger=PropertyChanged}" Margin="20 20 20 20">
+        Title="MainWindow" Height="450" Width="600"
+        MinHeight="300" MinWidth="525">
+    <DockPanel>
+        <ListView Name="LV_Mushrooms" ItemsSource="{Binding mushrooms, UpdateSourceTrigger = PropertyChanged}" Margin="20 20 20 20" SelectionChanged="LV_Mushrooms_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID, UpdateSourceTrigger=PropertyChanged}"/>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                    <GridViewColumn Header="Colour" DisplayMemberBinding="{Binding Colour, UpdateSourceTrigger=PropertyChanged}"/>
-                    <GridViewColumn Header="Edibility" DisplayMemberBinding="{Binding Edibility, UpdateSourceTrigger=PropertyChanged}"/>
-                    <GridViewColumn Header="Weight" DisplayMemberBinding="{Binding Weight, UpdateSourceTrigger=PropertyChanged}"/>
-                    <GridViewColumn Header="Height" DisplayMemberBinding="{Binding Height, UpdateSourceTrigger=PropertyChanged}"/>
-                    <GridViewColumn Header="Cap Radius" DisplayMemberBinding="{Binding Cap_Radius, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Colour" DisplayMemberBinding="{Binding Colour}"/>
+                    <GridViewColumn Header="Edibility" DisplayMemberBinding="{Binding Edibility}"/>
+                    <GridViewColumn Header="Weight" DisplayMemberBinding="{Binding Weight}"/>
+                    <GridViewColumn Header="Height" DisplayMemberBinding="{Binding Height}"/>
+                    <GridViewColumn Header="Cap Radius" DisplayMemberBinding="{Binding Cap_Radius}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <StackPanel Width="100" Margin="0 20 0 0" DataContext="{Binding ElementName=ListViewMushroom, Path=SelectedItem}">
+        <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Width="120" Margin="0 20 20 0" DataContext="{Binding ioMush, UpdateSourceTrigger = PropertyChanged}">
             <TextBox Name="TB_ID" Text="{Binding ID}" Margin="0 5 0 5"/>
             <TextBox Name="TB_Name" Text="{Binding Name}" Margin="0 5 0 5"/>
             <TextBox Name="TB_Colour" Text="{Binding Colour}" Margin="0 5 0 5"/>
-            <WrapPanel Margin="0 5 0 5">
-                <TextBlock Text="Edibility:" Margin="0 0 20 0"/>
-                <CheckBox Name="ChB_Edibility" IsChecked="{Binding Edibility}"/>
-            </WrapPanel>
+            <DockPanel Margin="0 5 0 5">
+                <TextBlock Text="Edibility:" DockPanel.Dock="Left"/>
+                <CheckBox Name="ChB_Edibility" DockPanel.Dock="Right" HorizontalAlignment="Right" IsChecked="{Binding Edibility}"/>
+            </DockPanel>
             <TextBox Name="TB_Weight" Text="{Binding Weight}" Margin="0 5 0 5"/>
             <TextBox Name="TB_Height" Text="{Binding Height}" Margin="0 5 0 5"/>
             <TextBox Name="TB_Cap_Radius" Text="{Binding Cap_Radius}" Margin="0 5 0 5"/>
-            <WrapPanel>
-                <Button Content="Remove" Click="RemoveButton_Click"/>
-                <Button Content="Add" Click="AddButton_Click"/>
-            </WrapPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Remove" Margin="5 0 5 0" Click="RemoveButton_Click"/>
+                <Button Grid.Column="1" Content="Add" Margin="5 0 5 0" Click="AddButton_Click"/>
+            </Grid>
         </StackPanel>
-    </WrapPanel>
+    </DockPanel>
 </Window>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Modules_lab3_Binding_AutoRefresh
 {
-    public class Mushroom
+    public class Mushroom : INotifyPropertyChanged
     {
         private int id;
         public int ID 
@@ -123,6 +123,10 @@ namespace Modules_lab3_Binding_AutoRefresh
             Weight = weight;
             Height = height;
             Cap_Radius = cap_radius;
+        }
+
+        public Mushroom()
+        {
         }
     }
 }
