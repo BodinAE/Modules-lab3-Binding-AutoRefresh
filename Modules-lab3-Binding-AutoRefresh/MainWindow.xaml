@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="600"
         MinHeight="300" MinWidth="525">
     <DockPanel>
-        <ListView Name="LV_Mushrooms" ItemsSource="{Binding mushrooms, UpdateSourceTrigger = PropertyChanged}" Margin="20 20 20 20" SelectionChanged="LV_Mushrooms_SelectionChanged">
+        <ListView Name="LV_Mushrooms" ItemsSource="{Binding mushrooms, UpdateSourceTrigger = PropertyChanged}" SelectedItem="{Binding SelectedMushroom}" Margin="20 20 20 20" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}"/>
@@ -21,7 +21,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Width="120" Margin="0 20 20 0" DataContext="{Binding ioMush, UpdateSourceTrigger = PropertyChanged}">
+        <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Width="120" Margin="0 20 20 0" >
+            <StackPanel DataContext="{Binding SelectedMushroom, UpdateSourceTrigger = PropertyChanged}">
             <TextBox Name="TB_ID" Text="{Binding ID}" Margin="0 5 0 5"/>
             <TextBox Name="TB_Name" Text="{Binding Name}" Margin="0 5 0 5"/>
             <TextBox Name="TB_Colour" Text="{Binding Colour}" Margin="0 5 0 5"/>
@@ -32,13 +33,16 @@
             <TextBox Name="TB_Weight" Text="{Binding Weight}" Margin="0 5 0 5"/>
             <TextBox Name="TB_Height" Text="{Binding Height}" Margin="0 5 0 5"/>
             <TextBox Name="TB_Cap_Radius" Text="{Binding Cap_Radius}" Margin="0 5 0 5"/>
+            </StackPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="Remove" Margin="5 0 5 0" Click="RemoveButton_Click"/>
-                <Button Grid.Column="1" Content="Add" Margin="5 0 5 0" Click="AddButton_Click"/>
+                <Button Grid.Column="0" Content="Remove" Margin="5 0 5 0" Command="{Binding RemComm}" CommandParameter="{Binding SelectedMushroom}"/>
+                <Button Grid.Column="1" Content="Add" 
+                        Margin="5 0 5 0" 
+                        Command= "{Binding AddComm}" CommandParameter="{Binding SelectedMushroom}"/>
             </Grid>
         </StackPanel>
     </DockPanel>
