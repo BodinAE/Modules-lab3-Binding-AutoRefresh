@@ -55,8 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="RelayCommand.cs" />
-    <Compile Include="ViewModel.cs" />
+    <Compile Include="Model\PropertyChanged.cs" />
+    <Compile Include="Model\RelayCommand.cs" />
+    <Compile Include="ViewModel\MushroomVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

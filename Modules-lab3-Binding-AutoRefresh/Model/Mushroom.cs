@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Modules_lab3_Binding_AutoRefresh
 {
-    public class Mushroom : INotifyPropertyChanged
+    public class Mushroom : PropertyChangedClass
     {
         private int id;
         public int ID 
@@ -102,12 +102,7 @@ namespace Modules_lab3_Binding_AutoRefresh
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
+
 
         public override string ToString()
         {

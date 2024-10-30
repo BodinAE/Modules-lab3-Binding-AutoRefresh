@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Modules_lab3_Binding_AutoRefresh
 {
-    internal class ViewModel : INotifyPropertyChanged
+    internal class MushroomVM : PropertyChangedClass
     {
         private RelayCommand addComm;
         public RelayCommand AddComm 
@@ -50,7 +50,7 @@ namespace Modules_lab3_Binding_AutoRefresh
             }
         }
 
-        public ViewModel()
+        public MushroomVM()
         {
             mushrooms = new ObservableCollection<Mushroom>()
             {
@@ -58,14 +58,6 @@ namespace Modules_lab3_Binding_AutoRefresh
                 new Mushroom(2, "Name2", "Colour2", true, 24.5, 32.4, 86.3),
                 new Mushroom(3, "Name3", "Colour3", true, 24.5, 32.4, 86.3)
             };
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-
         }
         public ObservableCollection<Mushroom> mushrooms { get; set; }
     }

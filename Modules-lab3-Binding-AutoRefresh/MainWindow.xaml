@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:Modules_lab3_Binding_AutoRefresh"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="600"
-        MinHeight="300" MinWidth="525">
+        MinHeight="300" MinWidth="525"
+        Background="AliceBlue">
     <DockPanel>
-        <ListView Name="LV_Mushrooms" ItemsSource="{Binding mushrooms, UpdateSourceTrigger = PropertyChanged}" SelectedItem="{Binding SelectedMushroom}" Margin="20 20 20 20" >
+        <ListView ItemsSource="{Binding mushrooms, UpdateSourceTrigger = PropertyChanged}"
+                  SelectedItem="{Binding SelectedMushroom}" Margin="20 20 20 20"  >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}"/>
@@ -21,28 +23,34 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Width="120" Margin="0 20 20 0" >
+        <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right"
+                    Width="120" Margin="0 20 20 0" >
             <StackPanel DataContext="{Binding SelectedMushroom, UpdateSourceTrigger = PropertyChanged}">
-            <TextBox Name="TB_ID" Text="{Binding ID}" Margin="0 5 0 5"/>
-            <TextBox Name="TB_Name" Text="{Binding Name}" Margin="0 5 0 5"/>
-            <TextBox Name="TB_Colour" Text="{Binding Colour}" Margin="0 5 0 5"/>
-            <DockPanel Margin="0 5 0 5">
-                <TextBlock Text="Edibility:" DockPanel.Dock="Left"/>
-                <CheckBox Name="ChB_Edibility" DockPanel.Dock="Right" HorizontalAlignment="Right" IsChecked="{Binding Edibility}"/>
-            </DockPanel>
-            <TextBox Name="TB_Weight" Text="{Binding Weight}" Margin="0 5 0 5"/>
-            <TextBox Name="TB_Height" Text="{Binding Height}" Margin="0 5 0 5"/>
-            <TextBox Name="TB_Cap_Radius" Text="{Binding Cap_Radius}" Margin="0 5 0 5"/>
+                <TextBox Text="{Binding ID}" Margin="0 5 0 5"/>
+                <TextBox Text="{Binding Name}" Margin="0 5 0 5"/>
+                <TextBox Text="{Binding Colour}" Margin="0 5 0 5"/>
+                <DockPanel Margin="0 5 0 5">
+                    <TextBlock Text="Edibility:" DockPanel.Dock="Left"/>
+                    <CheckBox DockPanel.Dock="Right" HorizontalAlignment="Right"
+                              IsChecked="{Binding Edibility}"/>
+                </DockPanel>
+                <TextBox Text="{Binding Weight}" Margin="0 5 0 5"/>
+                <TextBox Text="{Binding Height}" Margin="0 5 0 5"/>
+                <TextBox Text="{Binding Cap_Radius}" Margin="0 5 0 5"/>
             </StackPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="Remove" Margin="5 0 5 0" Command="{Binding RemComm}" CommandParameter="{Binding SelectedMushroom}"/>
-                <Button Grid.Column="1" Content="Add" 
-                        Margin="5 0 5 0" 
-                        Command= "{Binding AddComm}" CommandParameter="{Binding SelectedMushroom}"/>
+                <Button Grid.Column="0" 
+                        Content="Remove" Margin="5 0 5 0" 
+                        Command="{Binding RemComm}" 
+                        CommandParameter="{Binding SelectedMushroom}"/>
+                <Button Grid.Column="1" 
+                        Content="Add" Margin="5 0 5 0" 
+                        Command= "{Binding AddComm}" 
+                        CommandParameter="{Binding SelectedMushroom}"/>
             </Grid>
         </StackPanel>
     </DockPanel>
